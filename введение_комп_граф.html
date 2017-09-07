@@ -1,0 +1,45 @@
+<html>
+<body>
+
+	<script>
+
+	var isDown=0;
+	function onClick(event){
+		//alert('onClick x = ' + event.offsetX+'y = ' +event.offsetY);
+		canvas.fillStyle = '#0000bb';
+		ctx.fillRect(event.offsetX, event.offsetY, 2, 2);
+	}
+	
+	
+	function draw(event){
+		//alert('onClick x = ' + event.offsetX+'y = ' +event.offsetY);
+		canvas.fillStyle = '#0000bb';
+		if (isDown =1)
+		ctx.fillRect(event.offsetX, event.offsetY, 4, 4);
+	}
+	</script>
+	
+	<canvas id='lab01' height='10000' width='10000'>
+		<script>
+			var canvas = document.getElementById('lab01');
+			var ctx = canvas.getContext('2d');
+			canvas.addEventListener('click', onClick);
+			canvas.addEventListener('mousedown', function() {isDown=1;} );
+			canvas.addEventListener('mousemove', draw);
+			canvas.addEventListener('mouseup', function() {isDown=0;} );
+			ctx.fillStyle = '#00aa99';
+			ctx.fillRect(10,10, 20,15);
+			var arr = new Array(100);
+			for (i=0; i<100;i++) {
+				if (i<=50 || i>=80)	arr[i]=1;
+				else arr[i]=0;
+			}
+			ctx.fillStyle='#aa0000';
+			for (i=0;i<100;i++){
+				if (arr[i]==1) ctx.fillRect(i,i,2,2);
+			}
+			canvas.addEventListener('click', onClick);
+		</script>
+	</canvas>
+</body>
+</html>
